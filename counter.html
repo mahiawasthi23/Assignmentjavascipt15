@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+
+    <style>
+        body{
+            background-image: linear-gradient(#fdcd5c7e, rgb(156, 71, 17));
+        }
+        .container{
+            width: 350px;
+            position: absolute;
+            top: 250px;
+            left: 450px;
+            text-align: center;
+            margin: 40px;
+        }
+
+        .btn{
+            margin: 6px;
+            border-radius: 2px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="counter">Counter</h1>
+        <h1 id="countervalue">0</h1>
+        <div class="buttons">
+            <button class="btn decrease">DECREASE</button>
+            <button class="btn reset">RESET</button>
+            <button class="btn increase">INCREASE</button>
+        </div>
+    </div>
+
+
+    <script>
+        let count = 0;
+
+        const number = document.querySelector("#countervalue");
+        const buttons = document.querySelectorAll(".btn");
+
+        buttons.forEach(function (btn){
+            btn.addEventListener("click", function(e){
+                const styles = e.currentTarget.classList;
+                if(styles.contains('decrease')){
+                    count--;
+                }else if(styles.contains('increase')){
+                    count++;
+                }else{
+                    count = 0;
+                }
+
+                if(count > 0){
+                    number.style.color = 'blue';
+                }
+                if(count < 0){
+                    number.style.color = 'red';
+                }
+                if(count === 0){
+                    number.style.color = 'black';
+                }
+                number.textContent = count;
+            })
+        })
+    </script>
+</body>
+</html>

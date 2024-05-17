@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Div Color</title>
+</head>
+<style>
+    body{
+        background-color: rgb(229, 227, 227);
+    }
+    h2{
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 300px;
+        color: white;
+        background-color: black;
+    }
+    #color{
+        color: blue;
+    }
+    .container{
+        position: absolute;
+        top: 250px;
+        left: 500px;
+        text-align: center;
+    }
+    button{
+        border: 1px solid black;
+        border-radius: 2px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h2>background color :  <span id="color"> #F1f5f8</span> </h2>
+        <button onclick="changeColor()">CLICK ME</button>
+    </div>
+
+ <script>
+function changeColor() {
+    var randomColor = getRandomColor();
+    document.body.style.backgroundColor = randomColor;
+    document.getElementById("color").innerText = randomColor;
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+</script> 
+
+</body>
+</html>
