@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>General questions</title>
+     <link
+    rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+     <link 
+      href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap"
+      rel="stylesheet"/> 
+    <style>
+      body{
+        background-color: rgb(187, 186, 186);
+      } 
+      .section {
+        margin: 0 auto;
+        max-width: 1170px;
+      }
+      @media screen and (min-width: 992px) {
+        .section {
+          width: 95vw;
+        }
+      }
+      .heading h2{
+        margin-top: 15vh;
+        margin-bottom: 4rem;
+        font-family: "Grear Vibes", cursive;
+        text-align: center;
+      }
+      .question {
+        background-color: white;
+        width: 1000px;
+        margin-bottom: 3rem;
+      }
+      .question-title {
+        display: flex;
+        justify-content: space-between;
+        text-transform: capitalize;
+        padding-bottom: 1rem;
+        font-size: 20px;
+      }
+      .question-title p {
+        margin-bottom: 0;
+      }
+      .question-btn {
+        font-size: 25px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .question-btn:hover {
+        transform: rotate(90deg);
+      }
+      .question-text {
+        padding: 1rem 0 1.5rem 0;
+        border-top: 1px solid grey;
+        font-size: 20px;
+      }
+      .question-text {
+        display: none;
+      }
+      .show-text .question-text {
+        display: block;
+      }
+      .minus-icon {
+        display: none;
+      }
+      .show-text .minus-icon {
+        display: inline;
+      }
+      .show-text .plus-icon {
+        display: none;
+      }
+    </style> 
+  </head>
+  <body>
+      <div class="container">
+        <div class="heading">
+          <h2>General Questions</h2>
+        </div>
+        <div class="section">
+          <article class="question">
+            <div class="question-title">
+              <p>What is your strength and weakness ?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon"><i class="far fa-plus-square"></i></span>
+                <span class="minus-icon"><i class="far fa-minus-square"></i></span>
+              </button>
+            </div>
+            <div class="question-text">
+              <p>My strenghts are i am hard working and self motivating person and i have strong communication skills.</p>
+            </div>
+          </article>
+          <article class="question">
+            <div class="question-title">
+              <p>Why do you want to work with us ?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon"><i class="far fa-plus-square"></i></span>
+                <span class="minus-icon"><i class="far fa-minus-square"></i></span>
+              </button>
+            </div>
+            <div class="question-text">
+              <p>I am ready to learn new skills and take on new challenges, and I see this role as a perfect fit for my career goals.</p>
+            </div>
+          </article>
+          <article class="question">
+            <div class="question-title">
+              <p>Why should we hire you ?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon"><i class="far fa-plus-square"></i></span>
+                <span class="minus-icon"><i class="far fa-minus-square"></i></span>
+              </button>
+            </div>
+            <div class="question-text">
+              <p>If you hire me. It will be a great platform to show my skills. Whatever goals I set, I insure to complete them within spitulated time.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    <script>
+      const questions = document.querySelectorAll(".question");
+
+      questions.forEach(function (question) {
+        const btn = question.querySelector(".question-btn");
+
+        btn.addEventListener("click", function () {
+          questions.forEach(function (item) {
+            if (item !== question) {
+              item.classList.remove("show-text");
+            }
+          });
+          question.classList.toggle("show-text");
+        });
+      });
+    </script>
+  </body>
+</html>
