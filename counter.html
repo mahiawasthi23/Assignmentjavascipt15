@@ -12,15 +12,25 @@
         .container{
             width: 350px;
             position: absolute;
-            top: 250px;
-            left: 450px;
+            top: 15rem;
+            left: 40rem;
             text-align: center;
-            margin: 40px;
+
         }
 
         .btn{
             margin: 6px;
-            border-radius: 2px;
+            border-radius: 1rem;
+            width: 6rem;
+            height: 3rem;
+            background-color: white;
+            border: none;
+            box-shadow: 10px 10px 10px rgb(78, 75, 75);
+        }
+        #countervalue,.counter{
+            font-size: 4rem;
+            box-shadow: 10px 10px 10px rgb(78, 75, 75);
+            background-color: rgb(203, 101, 64);
         }
     </style>
 
@@ -58,7 +68,7 @@
                     number.style.color = 'blue';
                 }
                 if(count < 0){
-                    number.style.color = 'red';
+                    number.style.color = 'purple';
                 }
                 if(count === 0){
                     number.style.color = 'black';
