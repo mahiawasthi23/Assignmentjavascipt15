@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <style>
+        .container {
+            min-height: 100vh;
+            position: relative;
+            display: grid;
+            place-items: center;
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        h1 {
+            color: white;
+            position: absolute;
+            z-index: 2;
+            font-size: 4rem;
+        }
+        .buttons {
+            position: absolute;
+            bottom: 7%;
+            left: 7%;
+            width: 7rem;
+            height: 2rem;
+            display: flex;
+            border-radius: 1rem;
+            align-items: center;
+            justify-content: space-around;
+            border: none;
+            transition: 0.3s;
+        }
+        .buttons span {
+            display: inline-block;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-transform: capitalize;
+            color: brown;
+        }
+        .switch {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: blue;
+            border-radius: 1rem;
+            margin: 0;
+            display: block;
+            transition: 0.3s;
+        }
+        .slide .switch {
+            left: 50%;
+        }
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: aquamarine;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <video class="video-container" muted autoplay loop>
+            <source src="images/video.mp4" type="video/mp4"/>
+        </video>
+        <h1>video project</h1>
+        <button class="buttons">
+            <span>play</span>
+            <span>pause</span>
+            <span class="switch"></span>
+        </button>
+    </div>
+
+    <script>
+        const btn = document.querySelector('.buttons');
+        const video = document.querySelector('.video-container');
+
+        btn.addEventListener("click", function () {
+            if (!btn.classList.contains("slide")) {
+                btn.classList.add("slide");
+                video.pause();
+            } else {
+                btn.classList.remove("slide");
+                video.play();
+            }
+        });
+    </script>
+</body>
+</html>
