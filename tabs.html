@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabs</title>
+    <style>
+        body {
+            background-color: rgb(228, 253, 247);
+        }
+        .container {
+            width: 80rem;
+            margin: auto;
+        }
+        .heading h1 {
+            width: 15rem;
+            margin: auto;
+        }
+        #person-img {
+            width: 30rem;
+            box-shadow: 15px 15px 15px rgb(137, 137, 137);
+        }
+        .main {
+            display: flex;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            box-shadow: 10px 10px 10px rgb(240, 239, 239);
+        }
+        .tab-btn {
+            width: 13rem;
+            height: 2.5rem;
+            border: none;
+            background-color: rgb(210, 207, 207);
+        }
+        .tab-btn:focus {
+            background-color: white;
+            border: 3px solid skyblue;
+        }
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+        .content-container{
+            border: 1px solid black;
+            margin-left: 5rem;
+            box-shadow: 10px 10px 10px rgb(137, 137, 137);
+            background-color: rgb(219, 216, 216);
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1 class="about">About</h1>
+            <p class="about-para">Genius is equally distributed, opportunities are not. Imagine, getting bright youth from rural areas, youth bereft of any opportunities. And we train them rigorously, get them aspirational jobs, and let them pay for this. See the economic merit of this?
+
+                I see the social merit of this. Benefitting people from the bottom of the pyramid and at the same time equipping them with a sense of Entrepreneurship and an inclination to use technology and received education in solving REAL problems around them.
+                
+                College education doesn't work, but is there an alternative? Let's build one. If this sounds exciting, let's chat.</p>
+        </div>
+        <div class="main">
+            <div class="img-container">
+                <img src="/images/Abhisheksir.jpg" id="person-img" alt="founder of navgurukul"/>
+            </div>
+            <div class="content-container">
+                <div class="buttons-container">
+                    <button class="tab-btn" data-id="history">History</button>
+                    <button class="tab-btn" data-id="vision">Vision</button>
+                    <button class="tab-btn" data-id="goals">Goals</button>
+                </div>
+                <div class="content" id="history">
+                    <h4>History</h4>
+                    <p class="para-history">An IIT Delhi alumnus, Abhishek leads NavGurukul a non-profit which runs 1-year job-guaranteed residential courses for women from rural and tribal India. Abhishek earlier co-founded two startups in the past but made a switch to Social Sector to use his skills for what he truly believed in.</p>
+                </div>
+
+                <div class="content" id="vision">
+                    <h4>Vision</h4>
+                    <p class="para-history">NavGurukul's vision is to create alternatives to colleges to challenge inequality in Higher education and create Coders, Critical thinkers, and Changemakers. The aim of the organization is to reach the most underserved girls, denied of opportunities and resources and expose them to an equitable and independent future.</p>
+                </div>
+
+                <div class="content" id="goals">
+                    <h4>Goals</h4>
+                    <p class="para-history">Abhishek's work focuses on applied technical, policy, and organizational measures for building ethical, safe, and inclusive AI systems and organizations, especially in the operationalizing of responsible AI and its deployment in organizations, and assessing and mitigating the environmental impact of these systems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.content');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+
+                    contents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+
+                    document.getElementById(id).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
