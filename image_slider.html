@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+
+    <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgb(252, 252, 143);
+    }
+
+    .slider {
+        position: relative;
+        max-width: 60rem;
+        overflow: hidden;
+        border: 5px solid #121212;
+        border-radius: 10px;
+        background-color: #0e0d0d;
+        box-shadow: 25px 25px 25px rgb(159, 159, 159);
+    }
+
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+        min-width: 100%;
+        max-height: 30rem;
+    }
+
+    .btn-container {
+        display: flex;
+        gap: 3rem;
+        justify-content: center;
+    }
+
+    .btn {
+        height: 2rem;
+        border: none;
+        font-size: 2rem;
+        margin-top: 0.5rem;
+        box-shadow: 20px 20px 20px rgb(120, 119, 119);
+        background-color: black;
+        color: white;
+    }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slides">
+            <img src="/images/img3.webp" class="slide" alt="Image 1">
+            <img src="/images/img4.jpg" class="slide" alt="Image 2">
+            <img src="/images/img4.webp" class="slide" alt="Image 3">
+            <img src="/images/img5.jpg" class="slide" alt="Image 4">
+            <img src="/images/img5.webp" class="slide" alt="Image 5">
+        </div>
+        <div class="btn-container">
+            <button class="btn" id="prevBtn">Previous</button>
+            <button class="btn" id="nextBtn">Next</button>
+        </div>
+    </div>
+    
+    <script>
+        let currentSlideIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.getElementsByClassName('slide');
+            const totalSlides = slides.length;
+
+            if (index >= totalSlides) {
+                currentSlideIndex = 0;
+            } else if (index < 0) {
+                currentSlideIndex = totalSlides - 1;
+            } else {
+                currentSlideIndex = index;
+            }
+
+            const offset = -currentSlideIndex * 100;
+            const slidesContainer = document.getElementsByClassName('slides')[0];
+            slidesContainer.style.transform = 'translateX(' + offset + '%)';
+        }
+
+        function nextSlide() {
+            showSlide(currentSlideIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlideIndex - 1);
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        showSlide(currentSlideIndex);
+    </script>
+</body>
+</html>
+
