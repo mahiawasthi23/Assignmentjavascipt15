@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            max-width: 1170px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .title h2 {
+            font-size: 2rem;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        .underline {
+            width: 6rem;
+            height: 0.25rem;
+            background: #c59d5f;
+            margin: 0.5rem auto;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border-color: transparent;
+            font-size: 1.5rem;
+            text-transform: capitalize;
+            margin: 0 0.5rem;
+            letter-spacing: 0.1rem;
+            color: #c59d5f;
+            cursor: pointer;
+            padding: 0.375rem 0.75rem;
+            transition: all 0.3s linear;
+        }
+
+        .filter-btn:hover {
+            background: #c59d5f;
+            color: #fff;
+        }
+
+        .section-center {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .menu-item {
+            background: #fff;
+            padding: 1.5rem 2rem;
+            border-radius: 0.25rem;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            box-shadow: 15px 15px 15px rgba(8, 8, 8, 0.1);
+        }
+
+        .photo {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+            height: 200px;
+        }
+
+        .item-info {
+            padding: 1rem 0;
+        }
+
+        .item-info header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .item-info h4 {
+            text-transform: capitalize;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .price {
+            color: #c59d5f;
+        }
+
+        .item-text {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: #617d98;
+        }
+
+        @media screen and (max-width: 768px) {
+            .section-center {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    
+</head>
+<script src="https://kit.fontawesome.com/1ce671e465.js" crossorigin="anonymous"></script>
+<body>
+    <section class="menu">
+        <div class="title">
+            <h2>Our Menu</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="btn-container">
+            <button class="filter-btn" type="button" data-id="all">all</button>
+            <button class="filter-btn" type="button" data-id="breakfast">breakfast</button>
+            <button class="filter-btn" type="button" data-id="lunch">lunch</button>
+            <button class="filter-btn" type="button" data-id="shakes">shakes</button>
+        </div>
+        <div class="section-center"> </div>
+    </section>
+
+    <script>
+        const menu = [
+            {
+                id: 1,
+                title: "buttermilk pancakes",
+                category: "breakfast",
+                price: 15.99,
+                img: "/images/breakfast1.jpg",
+                desc: `I'm baby woke mlkshk wolf biters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed`,
+            },
+            {
+                id: 2,
+                title: "diner double",
+                category: "lunch",
+                price: 13.99,
+                img: "/images/lunch1.jpg",
+                desc: `Vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats`,
+            },
+            {
+                id: 3,
+                title: "godzilla milkshake",
+                category: "shakes",
+                price: 6.99,
+                img: "/images/shakes1.jpg",
+                desc: `Kombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+            },
+            {
+                id: 4,
+                title: "country delight",
+                category: "breakfast",
+                price: 20.99,
+                img: "/images/breakfast2.jpg",
+                desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut.`,
+            },
+            {
+                id: 5,
+                title: "country delight",
+                category: "breakfast",
+                price: 20.99,
+                img: "/images/breakfast3.jpg",
+                desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut.`,
+            },
+            {
+                id: 6,
+                title: "country delight",
+                category: "breakfast",
+                price: 20.99,
+                img: "/images/breakfast4.jpg",
+                desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut.`,
+            },
+            {
+                id: 7,
+                title: "country delight",
+                category: "breakfast",
+                price: 20.99,
+                img: "/images/breakfast5.jpg",
+                desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut.`,
+            },
+            {
+                id: 8,
+                title: "country delight",
+                category: "breakfast",
+                price: 20.99,
+                img: "/images/breakfast6.jpg",
+                desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut.`,
+            },
+
+            {
+                id: 9,
+                title: "diner double",
+                category: "lunch",
+                price: 13.99,
+                img: "/images/lunch2.jpg",
+                desc: `Vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats`,
+            },
+            {
+                id: 10,
+                title: "diner double",
+                category: "lunch",
+                price: 13.99,
+                img: "/images/lunch3.jpg",
+                desc: `Vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats`,
+            },
+            {
+                id: 11,
+                title: "diner double",
+                category: "lunch",
+                price: 13.99,
+                img: "/images/lunch4.jpg",
+                desc: `Vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats`,
+            },
+            {
+                id: 12,
+                title: "diner double",
+                category: "lunch",
+                price: 13.99,
+                img: "/images/lunch5.jpg",
+                desc: `Vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats`,
+            },
+            {
+                id: 13,
+                title: "diner double",
+                category: "lunch",
+                price: 13.99,
+                img: "/images/lunch6.jpg",
+                desc: `Vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats`,
+            },
+
+            {
+                id: 14,
+                title: "godzilla milkshake",
+                category: "shakes",
+                price: 6.99,
+                img: "/images/shakes2.jpg",
+                desc: `Kombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+            },
+
+            {
+                id: 15,
+                title: "godzilla milkshake",
+                category: "shakes",
+                price: 6.99,
+                img: "/images/shakes3.jpg",
+                desc: `Kombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+            },
+
+            {
+                id: 16,
+                title: "godzilla milkshake",
+                category: "shakes",
+                price: 6.99,
+                img: "/images/shakes4.jpg",
+                desc: `Kombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+            },
+
+            {
+                id: 17,
+                title: "godzilla milkshake",
+                category: "shakes",
+                price: 6.99,
+                img: "/images/shakes5.jpg",
+                desc: `Kombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+            },
+
+            {
+                id: 18,
+                title: "godzilla milkshake",
+                category: "shakes",
+                price: 6.99,
+                img: "/images/shakes6.jpg",
+                desc: `Kombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+            },
+        ];
+
+        const sectionCenter = document.querySelector('.section-center');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        window.addEventListener("DOMContentLoaded", function() {
+            displayMenuItems(menu);
+        });
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                const category = e.currentTarget.dataset.id;
+                const menuCategory = menu.filter(function(menuItem) {
+                    if (menuItem.category === category) {
+                        return menuItem;
+                    }
+                });
+                if (category === 'all') {
+                    displayMenuItems(menu);
+                } else {
+                    displayMenuItems(menuCategory);
+                }
+            });
+        });
+
+        function displayMenuItems(menuItems) {
+            let displayMenu = menuItems.map(function(item) {
+                return `<div class="menu-item">
+                    <img src=${item.img} class="photo" alt=${item.title}/>
+                    <div class="item-info">
+                        <header>
+                            <h4>${item.title}</h4>
+                            <h4 class="price">$${item.price}</h4>
+                        </header>
+                        <p class="item-text">${item.desc}</p>
+                    </div>
+                </div>`;
+            });
+            displayMenu = displayMenu.join('');
+            sectionCenter.innerHTML = displayMenu;
+        }
+    </script>
+    
+</body>
+</html>
