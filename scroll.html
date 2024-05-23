@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navigation-bar {
+            position: fixed;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 98%;
+            padding: 10px;
+            border-bottom: 1px solid rgb(10, 10, 10);
+            background-color: white;
+            z-index: 1;
+            box-shadow: 10px 10px 10px rgb(107, 107, 107);
+        }
+        ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+
+        }
+        .scroll-link li{
+           letter-spacing: 0.1rem;
+        }
+
+        .nav-link-item {
+            font-size: 22px;
+        }
+        .nav-link-item a {
+            text-decoration: none;
+            color: black;
+        }
+        .content-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        #home {
+            background: linear-gradient(rgba(63, 208, 212, 0.2), rgba(0, 0, 0, 0.7)),
+            url(./images/img3.webp) center/cover no-repeat;
+        }
+        #about {
+            background: linear-gradient(rgba(63, 208, 212, 0.3), rgba(0, 0, 0, 0.7)),
+            url(./images/home.jpg) center/cover no-repeat;
+        }
+        #services {
+            background: linear-gradient(rgba(63, 208, 212, 0.5), rgba(0, 0, 0, 0.7)),
+            url(./images/img5.jpg) center/cover no-repeat;
+        }
+        #order {
+            background: linear-gradient(rgba(63, 208, 212, 0.3), rgba(0, 0, 0, 0.7)),
+            url(./images/img4.jpg) center/cover no-repeat;
+        }
+        @media screen and (max-width: 699px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-button {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 30px;
+                cursor: pointer;
+            }
+        }
+        .page-footer {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+        }
+        img {
+            width: 130px;
+            box-shadow: 10px 10px 10px rgb(99, 99, 99);
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/1ce671e465.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav id="navigation-bar">
+        <img src="./images/logo.jpg" alt="logo" style="height: 39px;">
+        <div class="menu-list">
+            <ul class="nav-links">
+                <li class="nav-link-item">
+                    <a href="#home" class="scroll-link">Home</a>
+                </li>
+                <li class="nav-link-item">
+                    <a href="#about" class="scroll-link">About</a>
+                </li>
+                <li class="nav-link-item">
+                    <a href="#services" class="scroll-link">Services</a>
+                </li>
+                <li class="nav-link-item">
+                    <a href="#order" class="scroll-link">Order</a>
+                </li>
+            </ul>
+        </div>
+        <button class="menu-button">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <header>
+        <div id="home" class="content-section">
+            <h1>Our HOME</h1>
+        </div>
+        <div id="about" class="content-section">
+            <h1>Our ABOUT</h1>
+        </div>
+        <div id="services" class="content-section">
+            <h1>Our SERVICES</h1>
+        </div>
+        <div id="order" class="content-section">
+            <h1>Our ORDER</h1>
+        </div>
+    </header>
+    <footer class="page-footer">
+        <p>Copyright &copy; Backroads Travel Tours Company <span class="date">2020</span>. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const button = document.querySelector('.menu-button');
+            const links = document.querySelector('.nav-links');
+
+            button.addEventListener('click', function () {
+                links.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.scroll-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - document.querySelector('#navigation-bar').offsetHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
