@@ -1,0 +1,219 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown-timer</title>
+
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            max-width: 1170px;
+            background-color: rgb(235, 235, 237);
+            margin: 0 auto;
+           
+        }
+        .section-center{
+            padding: 5rem;
+            display: flex;
+            justify-content: space-between;
+            justify-content: space-around;
+            
+        }
+        .gift-img{
+            width: 30rem;
+            padding: 1rem;
+            background-color: white;
+           
+        }
+        .gift-info{
+            max-width: 30rem;
+            
+        }
+        .deadline{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+           
+        }
+        img{
+            width: 30rem;
+            box-shadow: 10px 10px 10px rgb(86, 85, 85);
+            border-radius: 0.25rem; 
+        }
+        h3{
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: blue;
+            font-size: 1.50rem;
+            margin-bottom: 0.3rem;
+        
+        }
+        .giveaway, h4{
+            text-transform: capitalize;
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+        p{
+            color: rgb(2, 2, 120);
+        }
+        .btn{
+            background-color: blue;
+            text-align: center;
+            text-transform: capitalize;
+            width: 4rem;
+            height: 4rem;
+            color: white;
+        }
+        .days,.hours,.mins,.secs{
+            font-size: 2rem;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+     <section class="section-center">
+        <article class="gift-img">
+            <img src="./images/clock.jpg" alt="gift-picture">
+        </article>
+        <article class="gift-info">
+            <h3>old clock giveaway</h3>
+            <h4 class="giveaway">giveaway ends on sunday, 24 April 2020, 8:00am</h4>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, 
+                adipisicing elit. Tenetur ullam enim alias nihil.
+                Lorem ipsum dolor, sit amet consectetur adipisicing 
+                elit. Fugit culpa neque, voluptates optio natus voluptas 
+                libero placeat assumenda eligendi impedit quas similique, 
+                nam quia animi facilis, 
+                repellendus autem magni alias.
+                Consequuntur non quaerat quo expedita quia maiores!
+            </p>
+            <div class="deadline">
+                <div class="deadline-format">
+                    <div class="btn">
+                        <h4 class="days">34 </h4>
+                        <span>days</span>
+                    </div>
+                </div>
+                <div class="deadline-format">
+                    <div class="btn">
+                        <h4 class="hours">34 </h4>
+                        <span>hours</span>
+                    </div>
+                </div>
+                <div class="deadline-format">
+                    <div class="btn">
+                        <h4 class="mins">34</h4>
+                        <span>mins</span>
+                    </div>
+                </div>
+                <div class="deadline-format">
+                    <div class="btn">
+                        <h4 class="secs">34</h4>
+                        <span>second</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+     </section>
+
+     <script>
+        const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "october",
+            "Navember",
+            "December",
+        ];
+
+        const weekdays = [
+            "Sunday",
+            "Monday",
+            "Tuesdaiy",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ];
+
+        const giveaway = document.querySelector('.giveaway');
+        const deadline = document.querySelector('.deadline');
+        const items = document.querySelectorAll(".deadline-format h4");
+        let tempDate = new Date();
+        let tempYear = tempDate.getFullYear();
+        let tempMonth = tempDate.getMonth();
+        let tempDay = tempDate.getDate();
+
+        const futureDate = new Date(tempYear, tempMonth , tempDay + 10, 11,30, 0);
+        
+
+       const year = futureDate.getFullYear();
+       const hours = futureDate.getHours();
+       const minutes = futureDate.getMinutes();
+
+       let month = futureDate.getMonth();
+       month = months[month];
+       const date = futureDate.getDate();
+
+       const weekday = weekdays[futureDate.getDay()];
+
+       
+
+       giveaway.textContent = `giveaway ends on ${weekday}, ${date}   ${month}  ${year} ${hours}: ${minutes}am`;
+       
+
+       const futureTime  = futureDate.getTime();
+       
+       function getRemainingTime(){
+        const today = new Date().getTime();
+       const t = futureTime - today;
+       
+
+       
+       const oneDay = 24*60*60*1000;
+       const oneHour = 60*60*1000;
+       const oneMinute = 60*1000;
+       
+       let days = t/oneDay;
+       days = Math.floor(days);
+       let hours = Math.floor((t % oneDay)/ oneHour);
+       let minutes = Math.floor((t % oneHour)/oneMinute);
+       let seconds = Math.floor((t % oneMinute)/1000);
+
+       const values = [days,hours, minutes,seconds];
+
+       function format(item){
+        if(item <10){
+            return item = `0${item}`
+        }
+        return item
+       }
+
+       items.forEach(function(item,index){
+        item.innerHTML = format(values[index]);
+       });
+       if(t < 0){
+        clearInterval(countdown);
+        deadline.innerHTML = `<h4 class="expired">sorry ,this giveaway has expired</h4>`;
+       }
+       }
+
+       
+       let countdown = setInterval(getRemainingTime, 1000);
+
+       getRemainingTime();
+
+     </script>
+</body>
+</html>
